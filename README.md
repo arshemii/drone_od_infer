@@ -3,6 +3,16 @@ This repository presents necessary scripts and files for a ready-to-use object d
 
 To use, follow the steps:
 
+
+# Important, temporary updates:
+At this moment, the prepared docker image does not contain all necessary packages to run the model. So, in order to use the model without containarization, just run the main python script in terminal with the following flags:
+1. --model   (Write the name of model . Ex: yolov8n_quantized)
+2. --vis (If mode is webcam, to visualize or report a text for results)
+3. --capture (Select between webcam and realsense --> for webcam, select --vis also)
+4. --conf and --iou (Float value between 0 to 1)
+
+
+
 # Pull the docker ----------------------------------------------------
 
 Inside your terminal run the following command:
