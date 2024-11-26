@@ -46,9 +46,9 @@ def main(model, vis, capture, conf, iou):
     async_fps = 0
     a_infer.set_tensor(input_layer, ov.Tensor(frame))
     a_infer.start_async()
-    
+    frame = 0;
+    ti = time.time()
     while True:
-        ti = time.time()
         if capture == "webcam":
             _, frame_next = cap.read()
             frame_next = flex.wc_preprocess(frame_next, input_tuple)
@@ -66,8 +66,9 @@ def main(model, vis, capture, conf, iou):
         res = a_infer.get_output_tensor(0).data
         
         total_time = time.time() - ti
-        async_fps = 1 / total_time #Absolute, not average
-        print(f"Absolute FPS: {async_fps}")
+        frame = frame + 1
+        async_fps = frame / total_time
+        print(f"Average FPS: {async_fps}")
         
         if capture == "webcam":
             if vis == "video":
