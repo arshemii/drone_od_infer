@@ -46,7 +46,7 @@ def main(model, vis, capture, conf, iou):
     async_fps = 0
     a_infer.set_tensor(input_layer, ov.Tensor(frame))
     a_infer.start_async()
-    frame = 0;
+    frame_count = 0;
     ti = time.time()
     while True:
         if capture == "webcam":
@@ -66,8 +66,8 @@ def main(model, vis, capture, conf, iou):
         res = a_infer.get_output_tensor(0).data
         
         total_time = time.time() - ti
-        frame = frame + 1
-        async_fps = frame / total_time
+        frame_count = frame_count + 1
+        async_fps = frame_count / total_time
         print(f"Average FPS: {async_fps}")
         
         if capture == "webcam":
