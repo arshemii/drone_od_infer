@@ -32,6 +32,7 @@ def yaml_load(file="data.yaml", append_filename=False):
 class FlexInfer():    
     def __init__(self, ):
         self.DEVICE = "CPU"
+        self.CONFIG = {hints.performance_mode: hints.PerformanceMode.THROUGHPUT}
         self.yaml_path = "./coco.yaml"
         self.CLASSES = yaml_load(self.yaml_path)["names"]
         self.colors = np.random.uniform(0, 255, size=(len(self.CLASSES), 3))
@@ -41,7 +42,7 @@ class FlexInfer():
             'fy': 617.6768798828125,
             'ppx': 330.5740051269531,
             'ppy': 235.93508911132812,
-            }   
+            }     
         
     def RS(self):
         """
