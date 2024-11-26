@@ -6,4 +6,4 @@
   -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY \
   --cpus="2.0" \     # Adjust it if you need a different limitaion
   --memory="2g" \    # Adjust it if you need a different limitaion
-  arshemii/drone_od:25nov24
+  arshemii/drone_od:26nov24 # Check with the tag of image
