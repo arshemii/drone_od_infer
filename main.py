@@ -12,7 +12,7 @@ import openvino as ov
 import time
 import cv2
 
-def main(model, vis, capture, conf, iou, mapping):
+def main(model, vis, capture, conf, iou):
     flex = FlexInfer()
     
     cmodel = flex.cmodel(model)
