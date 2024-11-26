@@ -13,24 +13,16 @@ After optimizing the model, an optimized inference shall be presented which this
 2.1. optional: To ensure using the last repository, remove directory edge_od, and clone this repository again
 3. Move to the directory of the repository using cd
 4. Run 'python3 main.py' using the flag guide above:
-   4.1. 
+   4.1. --model (example: yolov8n_quantized)
+   4.2. --vis (video or text): For webcam use and specifies if you need visualization or textual report
+   4.3. --capture (webcam or realsense): Select the device
+   4.4. --conf: confidence score
+   4.5. --iou: IOU value
 
+   
 
+References:
+1. https://github.com/ultralytics
+2. https://github.com/openvinotoolkit/openvino
 
-
-# Run object detection
-
-Go to the repository directory using:
-cd edge_od
-and run:
-main.py
-
-# Important
-
-1. The docker image is a simplified and light version of ultralytics for CPU use
-2. You can change python files for more personalization using nano text editor inside a container.
-3. You might need to change the devices for video while opening a container
-4. You can add other models for inference inside your cloned repository
-
-
-# For more information: a.hashemi@studenti.unina.it
+# Contact: arshemii1373@gmail.com
