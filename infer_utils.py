@@ -32,8 +32,8 @@ def yaml_load(file="data.yaml", append_filename=False):
 class FlexInfer():    
     def __init__(self, ):
         self.DEVICE = "CPU"
-        self.CONFIG = {hints.performance_mode: hints.PerformanceMode.THROUGHPUT}
-        self.CLASSES = yaml_load(check_yaml("coco8.yaml"))["names"]
+        self.yaml_path = "./coco.yaml"
+        self.CLASSES = yaml_load(self.yaml_path)["names"]
         self.colors = np.random.uniform(0, 255, size=(len(self.CLASSES), 3))
         self.s_nms = 0.45
         self.rgb_ints = {
