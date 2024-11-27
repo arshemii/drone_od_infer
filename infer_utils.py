@@ -122,7 +122,7 @@ class FlexInfer():
         ppx = rgb_ints['ppx']
         ppy = rgb_ints['ppy']
         
-        dcm = 100*depth[box_center[0], box_center[1]]
+        dcm = depth[box_center[0], box_center[1]]
         cxcm = (box_center[0] - ppx) * dcm / fx
         cycm = (box_center[1] - ppy) * dcm / fy
         
