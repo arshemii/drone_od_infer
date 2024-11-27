@@ -46,8 +46,8 @@ def main(model, vis, capture, conf, iou):
     async_fps = 0
     a_infer.set_tensor(input_layer, ov.Tensor(frame))
     a_infer.start_async()
-    frame_count = 0;
     ti = time.time()
+    f_count = 0
     while True:
         if capture == "webcam":
             _, frame_next = cap.read()
@@ -58,7 +58,7 @@ def main(model, vis, capture, conf, iou):
             aligned_frames = align.process(frameset)
             depth_frame = aligned_frames.get_depth_frame()
             color_frame = aligned_frames.get_color_frame()
-            frame_next, depth_next = flex.rs_preprocess(color_frame, depth_frame, input_tuple)
+            frame_next, depth_next = flex.rs_preprocess(color_frame, depth_frame, input_tuple, depth_scale)
             
         b_infer.set_tensor(input_layer, ov.Tensor(frame_next))
         b_infer.start_async()
@@ -66,8 +66,8 @@ def main(model, vis, capture, conf, iou):
         res = a_infer.get_output_tensor(0).data
         
         total_time = time.time() - ti
-        frame_count = frame_count + 1
-        async_fps = frame_count / total_time
+        f_count = f_count + 1
+        async_fps = f_count / total_time #Absolute, not average
         print(f"Average FPS: {async_fps}")
         
         if capture == "webcam":
@@ -84,8 +84,8 @@ def main(model, vis, capture, conf, iou):
                 detections = flex.od_report(res, conf, iou)
         if capture == "realsense":
             # Mode is pose estimation (Report)
-            detections = flex.pose_est(res, depth_next, conf, iou, mapping)
-            
+            detections = flex.pose_est(res, depth_next, conf, iou)
+            #print(det_string)
         frame = frame_next
         a_infer, b_infer = b_infer, a_infer
 
