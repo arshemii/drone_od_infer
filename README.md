@@ -1,10 +1,10 @@
-# YOLO on edge
-This repository presents a complete, flexible, and ready-to-use application to run YOLO on edge devices (Tested on LattePanda Delta 3, Webcam, and Intel RealSense D435)
+# object Detection on edge
+This repository presents a complete, flexible, and ready-to-use application to run object detection models on edge devices (Tested on LattePanda Delta 3, Webcam, and Intel RealSense D435)
 
 --------------------------------------
 Detail description:
 
-This repository includes the optimized models of YOLOv8n, YOLOv8s, YOLOv11n, and YOLOv11s (Updating). The optimization is done using OpenVino NNCF and can be done using [this repository](https://github.com/arshemii/yolo_optimization).
+This repository includes the optimized models of YOLOv8n, YOLOv8s, YOLOv11n, YOLOv11s, and CenterNet dval0 (Updating). The optimization is done using OpenVino NNCF and can be done using [this repository](https://github.com/arshemii/detection_quantization).
 
 After optimizing the model, an optimized inference shall be presented which this repository uses OpenVino runtime since the target hardware is a LattePanda Delta 3 which only has intel CPU and an integrated graphic processor which is not used. Considering that models are optimized or downloaded from this repository, the following order is to run inference:
 
