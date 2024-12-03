@@ -1,4 +1,4 @@
-# object Detection on edge
+# Object Detection on edge
 This repository presents a complete, flexible, and ready-to-use application to run object detection models on edge devices (Tested on LattePanda Delta 3, Webcam, and Intel RealSense D435)
 
 --------------------------------------
